@@ -17,10 +17,10 @@
    <widget class="QLabel" name="g_map">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>200</y>
-      <width>400</width>
-      <height>350</height>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>581</height>
      </rect>
     </property>
     <property name="text">
