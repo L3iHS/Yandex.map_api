@@ -18,7 +18,7 @@ class MainWindow(QMainWindow):
         uic.loadUi("main_window.ui", self)
 
         self.map_zoom = 10
-        self.map_ll = [37.977751, 55.757718]
+        self.map_ll = [37.498321, 55.810208]
         self.map_key = ""
 
         self.refresh_map()
@@ -47,4 +47,3 @@ app = QApplication(sys.argv)
 main_window = MainWindow()
 main_window.show()
 sys.exit(app.exec())
-
