@@ -30,9 +30,9 @@ class MainWindow(QMainWindow):
     def keyPressEvent(self, event):
         pass
 
-    def refresh_map(self):
+    def refresh_map(self, theme):
         map_params = {
-            'theme': 'dark',   # темная тема   светлая -> 'light'
+            'theme': theme,   # темная тема -> 'dark'  светлая -> 'light'
             "ll": ','.join(map(str, self.map_ll)),
             'z': self.map_zoom,
             'apikey': API_KEY_STATIC,
@@ -47,30 +47,6 @@ class MainWindow(QMainWindow):
         img = QImage.fromData(response.content)
         pixmap = QPixmap.fromImage(img)
         self.g_map.setPixmap(pixmap)
-    
-    def get_cord(toponym_to_find):
-        geocoder_api_server = "http://geocode-maps.yandex.ru/1.x/"
-
-        geocoder_params = {
-            "apikey": os.getenv('geocoder_apikey'),
-            "geocode": toponym_to_find,
-            "format": "json"}
-
-        response = requests.get(geocoder_api_server, params=geocoder_params)
-
-        if not response:
-            # обработка ошибочной ситуации
-            pass
-
-        # Преобразуем ответ в json-объект
-        json_response = response.json()
-        # Получаем первый топоним из ответа геокодера.
-        toponym = json_response["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]
-        # Координаты центра топонима:
-        toponym_coodrinates = toponym["Point"]["pos"]
-        # Долгота и широта:
-        cord = toponym_coodrinates.split(" ")
-
 
 
 app = QApplication(sys.argv)

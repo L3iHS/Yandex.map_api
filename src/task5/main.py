@@ -30,9 +30,9 @@ class MainWindow(QMainWindow):
     def keyPressEvent(self, event):
         pass
 
-    def refresh_map(self):
+    def refresh_map(self, theme):
         map_params = {
-            'theme': 'dark',   # темная тема   светлая -> 'light'
+            'theme': theme,   # темная тема -> 'dark'  светлая -> 'light'
             "ll": ','.join(map(str, self.map_ll)),
             'z': self.map_zoom,
             'apikey': API_KEY_STATIC,
